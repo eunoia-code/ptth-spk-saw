@@ -1,9 +1,11 @@
 <?php
 
-namespace App\Controllers\admin;
-use App\Controllers\BaseController;
+namespace App\Controllers\Admin;
 
-class Home extends BaseController
+use App\Controllers\BaseController;
+use App\Models\EmployeeModel;
+
+class Employee extends BaseController
 {
     protected $session;
 
@@ -19,11 +21,13 @@ class Home extends BaseController
             return redirect()->to(base_url('login'));
         }
 
+        $employees = new EmployeeModel();
+        $data['pegawai'] = $employees->findAll();
 
         echo view('template/header');
         echo view('template/navbar');
         echo view('template/sidebar');
-        echo view('admin/home');
+        echo view('admin/employee', $data);
         echo view('template/footer');
     }
 }

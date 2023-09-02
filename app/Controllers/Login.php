@@ -5,10 +5,24 @@ namespace App\Controllers;
 use App\Models\UsersModel;
 
 class Login extends BaseController
-{
+{    
+    protected $session;
+
+    function __construct()
+    {
+        $this->session = \Config\Services::session();
+        $this->session->start();
+    }
+
     public function index()
     {
         return view('auth/login');
+    }
+
+    public function logout()
+    {
+        $this->session->destroy();
+        return redirect()->to(base_url('login'));
     }
 
     public function process()
@@ -21,18 +35,18 @@ class Login extends BaseController
         ])->first();
         if ($dataUser) {
             if (password_verify($password, $dataUser->password)) {
-                session()->set([
+                $this->session->set([
                     'username' => $dataUser->username,
                     'name' => $dataUser->name,
                     'logged_in' => TRUE
                 ]);
-                return redirect()->to(base_url('home'));
+                return redirect()->to(base_url('admin'));
             } else {
-                session()->setFlashdata('error', 'Username & Password Salah');
+                $this->session->setFlashdata('error', 'Username & Password Salah');
                 return redirect()->back();
             }
         } else {
-            session()->setFlashdata('error', 'Username & Password Salah');
+            $this->session->setFlashdata('error', 'Username & Password Salah');
             return redirect()->back();
         }
     }

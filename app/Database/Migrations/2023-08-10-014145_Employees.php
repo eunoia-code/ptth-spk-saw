@@ -10,16 +10,14 @@ class Employees extends Migration
 	{
 		$this->forge->addField([
 			'id'          => [
-				'type'           => 'INT',
-				'constraint'     => 5,
-                'unsigned'       => true,
-                'auto_increment' => true,
+				'type'           => 'VARCHAR',
+				'constraint'     => '25',
 			],
 			'nama_pegawai'       => [
 				'type'           => 'VARCHAR',
 				'constraint'     => '100',
 			],
-			'umur'       => [
+			'usia'       => [
 				'type'           => 'INT',
 				'constraint'     => 5,
 			],
@@ -47,7 +45,7 @@ class Employees extends Migration
 				'type'           => 'INT',
 				'constraint'     => 5,
 			],
-			'prestasi'       => [
+			'prestasi_kerja'       => [
 				'type'           => 'INT',
 				'constraint'     => 5,
 			],

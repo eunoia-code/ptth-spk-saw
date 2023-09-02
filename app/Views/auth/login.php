@@ -17,16 +17,23 @@
     <body class="hold-transition login-page">
         <div class="login-box">
             <div class="login-logo">
-                <a href="../../index2.html"><b>Admin</b>LTE</a>
+                <a href="<?= base_url(); ?>"><b>Admin</b>LTE</a>
             </div>
+            <?php if (!empty(session()->getFlashdata('error'))) : ?>
+                <div class="alert alert-danger alert-dismissible">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                    <h5><i class="icon fas fa-ban"></i> Alert!</h5>
+                    <?php echo session()->getFlashdata('error'); ?> 
+                </div>
+            <?php endif; ?>
             <!-- /.login-logo -->
             <div class="card">
                 <div class="card-body login-card-body">
-                <p class="login-box-msg">Sign in to start your session</p>
-
-                <form action="../../index3.html" method="post">
+                <p class="login-box-msg">Silahkan Masuk!</p>
+                <form action="<?= base_url('login/process'); ?>" method="post">
+                    <?= csrf_field(); ?>
                     <div class="input-group mb-3">
-                    <input type="email" class="form-control" placeholder="Email">
+                    <input type="text" class="form-control" placeholder="Username" id="username" name="username">
                     <div class="input-group-append">
                         <div class="input-group-text">
                         <span class="fas fa-envelope"></span>
@@ -34,7 +41,7 @@
                     </div>
                     </div>
                     <div class="input-group mb-3">
-                    <input type="password" class="form-control" placeholder="Password">
+                    <input type="password" class="form-control" placeholder="Password" id="password" name="password">
                     <div class="input-group-append">
                         <div class="input-group-text">
                         <span class="fas fa-lock"></span>
@@ -72,18 +79,3 @@
     </body>
 </html>
 
-
-
-<!-- <?php if (!empty(session()->getFlashdata('error'))) : ?>
-    <div class="alert alert-warning alert-dismissible fade show" role="alert">
-        <?php echo session()->getFlashdata('error'); ?>
-    </div>
-<?php endif; ?>
-<form method="post" action="<?= base_url(); ?>/login/process">
-    <?= csrf_field(); ?>
-    <h1 class="h3 mb-3 fw-normal">Login</h1>
-    <input type="text" name="username" id="username" placeholder="Username" class="form-control" required autofocus>
-    <input type="password" name="password" id="password" placeholder="Password" class="form-control" required>
-    <button type="submit" class="w-100 btn btn-lg btn-primary">Login</button>
-    <p class="mt-5 mb-3 text-muted">&copy; Warung Belajar</p>
-</form> -->
