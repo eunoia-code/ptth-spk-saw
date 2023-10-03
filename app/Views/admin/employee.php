@@ -50,14 +50,14 @@
                         <td><?= $i++; ?></td>
                         <td><?= $p['id']; ?></td>
                         <td><?= $p['nama_pegawai']; ?></td>
-                        <td><?= $p['umur']; ?></td>
+                        <td><?= $p['usia']; ?></td>
                         <td><?= $p['pendidikan']; ?></td>
                         <td><?= $p['keahlian']; ?></td>
                         <td><?= $p['masa_kerja']; ?></td>
                         <td><?= $p['kehadiran']; ?></td>
                         <td><?= $p['tanggung_jawab']; ?></td>
                         <td><?= $p['kejujuran']; ?></td>
-                        <td><?= $p['prestasi']; ?></td>
+                        <td><?= $p['prestasi_kerja']; ?></td>
                       </tr>
                     <?php } ?>
                   </tbody>

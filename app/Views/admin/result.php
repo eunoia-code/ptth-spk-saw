@@ -34,7 +34,9 @@
                     <th>No.</th>
                     <th>NIK</th>
                     <th>Nama Pegawai</th>
+                    <th>Bobot</th>
                     <th>Skor</th>
+                    <th>Keterangan</th>
                   </tr>
                   </thead>
                   <tbody>
@@ -43,7 +45,9 @@
                         <td><?= $i++; ?></td>
                         <td><?= $r['id']; ?></td>
                         <td><?= $r['nama_pegawai']; ?></td>
-                        <td><?= $r['skor']; ?></td>
+                        <td><pre><?php echo htmlspecialchars(json_encode($r['bobot_kriteria'], JSON_PRETTY_PRINT), ENT_QUOTES, 'UTF-8'); ?></pre></td>
+                        <td><?= round($r['skor'] * 100, 2); ?></td>
+                        <td><?= round($r['skor'] * 100, 2) >=50 ? "Perpanjang Kontrak" : "" ?></td>
                       </tr>
                     <?php } ?>
                   </tbody>

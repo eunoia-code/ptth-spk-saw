@@ -62,14 +62,14 @@ class Result extends BaseController
                 $nilai = $pegawai[$kriteria];
                 // Perhitungan normalisasi untuk kriteria "benefit" (usia)
                 if ($jenisKriteria === 'benefit') {
-                    $nilaiNormalisasi = max(array_column($data['employees'], $kriteria)) / $nilai;
-                    $krt[$kriteria] = max(array_column($data['employees'], $kriteria))." / ".$nilai." = ".$nilaiNormalisasi ;
+                    $nilaiNormalisasi = $nilai / max(array_column($data['employees'], $kriteria));
+                    $krt[$kriteria] = "benefit => ".$nilai." / ".max(array_column($data['employees'], $kriteria))." = ".$nilaiNormalisasi ;
                     // if($pegawai['id']=="2011.01.01.0203")
                     //     echo $pegawai['nama_pegawai']." -> ".$kriteria." --> ".max(array_column($data['employees'], $kriteria))." => ".$nilai."<br>";
                 } elseif ($jenisKriteria === 'cost') {
                     // Perhitungan untuk kriteria "cost"
-                    $nilaiNormalisasi = $nilai / max(array_column($data['employees'], $kriteria));
-                    $krt[$kriteria] = $nilai." / ".max(array_column($data['employees'], $kriteria))." = ".$nilaiNormalisasi;
+                    $nilaiNormalisasi = min(array_column($data['employees'], $kriteria)) / $nilai;
+                    $krt[$kriteria] = "cost => ".min(array_column($data['employees'], $kriteria))." / ". $nilai." = ".$nilaiNormalisasi;
                     // if($pegawai['id']=="2011.01.01.0203")
                     //     echo $pegawai['nama_pegawai']." -> ".$kriteria." --> ".max(array_column($data['employees'], $kriteria))." => ".$nilai."<br>";
                 } //else {
