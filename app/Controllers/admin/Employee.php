@@ -20,6 +20,7 @@ class Employee extends BaseController
         if(!$this->session->get('username')){
             return redirect()->to(base_url('login'));
         }
+        $data['validation'] = session('validation');
 
         $employees = new EmployeeModel();
         $data['pegawai'] = $employees->findAll();
@@ -29,5 +30,124 @@ class Employee extends BaseController
         echo view('template/sidebar');
         echo view('admin/employee', $data);
         echo view('template/footer');
+    }
+
+    public function read($id)
+    {
+        $pegawai = new EmployeeModel();
+        $data['pegawai'] = $pegawai->where('id', $id)->first();
+
+        if (!$data['pegawai']) {
+            // Handle the case when the user is not found
+            return $this->response->setJSON(['error' => 'Pegawai Tidak Ditemukan!!!']);
+        }
+
+        // Return the user data as JSON
+        return $this->response->setJSON($data['pegawai']);
+    }
+
+    public function create()
+    {
+        helper(['form', 'url']);
+         //define validation
+         $validation = $this->validate([
+            'nik' => [
+                'rules'  => 'required',
+                'errors' => [
+                    'required' => 'Masukkan NIK'
+                ]
+            ],
+            'nama_pegawai'    => [
+                'rules'  => 'required',
+                'errors' => [
+                    'required' => 'Masukkan Nama Pegawai'
+                ]
+            ]
+        ]);
+
+        if(!$validation) {
+            //render view with error validation message
+            return redirect()->to('/admin/employee')->with('validation', $this->validator);
+        } else {
+
+             //model initialize
+            $userModel = new EmployeeModel();
+            
+            //insert data into database
+            $userModel->insert([
+                'id' => $this->request->getPost('nik'),
+                'nama_pegawai' => $this->request->getPost('nama_pegawai'),
+                'usia' => $this->request->getPost('usia'),
+                'pendidikan' => $this->request->getPost('pendidikan'),
+                'keahlian' => $this->request->getPost('keahlian'),
+                'masa_kerja' => $this->request->getPost('masa_kerja'),
+                'kehadiran' => $this->request->getPost('kehadiran'),
+                'tanggung_jawab' => $this->request->getPost('tanggung_jawab'),
+                'kejujuran' => $this->request->getPost('kejujuran'),
+                'prestasi_kerja' => $this->request->getPost('prestasi_kerja')
+            ]);
+            //flash message
+            session()->setFlashdata('message', 'Pegawai Baru Berhasil Disimpan !!!');
+
+            return redirect()->to(base_url('admin/employee'));
+        }
+    }
+
+    public function update($id)
+    {
+        helper(['form', 'url']);
+         //define validation
+         $validation = $this->validate([
+            'xnik' => [
+                'rules'  => 'required',
+                'errors' => [
+                    'required' => 'Masukkan NIK'
+                ]
+            ],
+            'xnama_pegawai'    => [
+                'rules'  => 'required',
+                'errors' => [
+                    'required' => 'Masukkan Nama Pegawai'
+                ]
+            ]
+        ]);
+
+        if(!$validation) {
+            //render view with error validation message
+            return redirect()->to('/admin/employee')->with('validation', $this->validator);
+        } else {
+
+             //model initialize
+            $userModel = new EmployeeModel();
+            
+            //insert data into database
+            $data = [
+                'id' => $this->request->getPost('xnik'),
+                'nama_pegawai' => $this->request->getPost('xnama_pegawai'),
+                'usia' => $this->request->getPost('xusia'),
+                'pendidikan' => $this->request->getPost('xpendidikan'),
+                'keahlian' => $this->request->getPost('xkeahlian'),
+                'masa_kerja' => $this->request->getPost('xmasa_kerja'),
+                'kehadiran' => $this->request->getPost('xkehadiran'),
+                'tanggung_jawab' => $this->request->getPost('xtanggung_jawab'),
+                'kejujuran' => $this->request->getPost('xkejujuran'),
+                'prestasi_kerja' => $this->request->getPost('xprestasi_kerja')
+            ];
+
+            $userModel->update($id, $data);
+
+            //flash message
+            session()->setFlashdata('message', 'Pegawai Baru Berhasil Diubah !!!');
+
+            return redirect()->to(base_url('admin/employee'));
+        }
+    }
+
+    public function delete($id)
+    {
+        $user = new EmployeeModel();
+        $user->delete($id);
+        session()->setFlashdata('message', 'Data Pegawai Berhasil Dihapus !!!');
+        return redirect()->to(base_url('admin/employee'));
     }
 }

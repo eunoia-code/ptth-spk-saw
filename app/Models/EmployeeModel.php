@@ -13,7 +13,7 @@ class EmployeeModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['id', 'nama_pegawai', 'umur', 'pendidikan', 'keahlian', 'masa_kerja', 'kehadiran', 'tanggung_jawab', 'kejujuran', 'prestasi'];
+    protected $allowedFields    = ['id', 'nama_pegawai', 'usia', 'pendidikan', 'keahlian', 'masa_kerja', 'kehadiran', 'tanggung_jawab', 'kejujuran', 'prestasi_kerja'];
 
     // Dates
     protected $useTimestamps = false;

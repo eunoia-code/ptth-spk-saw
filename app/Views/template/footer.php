@@ -83,7 +83,10 @@
     // }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
     $('#example2_filter > label').addClass("float-right")
   });
+
+  
 </script>
+  <?= $this->renderSection('extraFooter') ?>
 
 </body>
 </html>

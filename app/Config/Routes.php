@@ -41,8 +41,20 @@ $routes->get('/logout', 'Login::logout');
 
 $routes->get('/admin', 'admin\Home::index');
 $routes->get('/admin/home', 'admin\Home::index');
+
 $routes->get('/admin/employee', 'admin\Employee::index');
+$routes->get('/admin/employee/read/(:segment)', 'admin\Employee::read/$1');
+$routes->post('/admin/employee/create', 'admin\Employee::create');
+$routes->post('/admin/employee/update/(:segment)', 'admin\Employee::update/$1');
+$routes->get('/admin/employee/delete/(:segment)', 'admin\Employee::delete/$1');
+
 $routes->get('/admin/criteria', 'admin\Criteria::index');
+$routes->get('/admin/criteria/read/(:segment)', 'admin\Criteria::read/$1');
+$routes->post('/admin/criteria/create', 'admin\Criteria::create');
+$routes->post('/admin/criteria/update/(:segment)', 'admin\Criteria::update/$1');
+$routes->get('/admin/criteria/delete/(:segment)', 'admin\Criteria::delete/$1');
+
+
 $routes->get('/admin/result', 'admin\Result::index');
 /*
  * --------------------------------------------------------------------
