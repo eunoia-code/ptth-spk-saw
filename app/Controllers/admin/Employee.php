@@ -25,6 +25,17 @@ class Employee extends BaseController
         $employees = new EmployeeModel();
         $data['pegawai'] = $employees->findAll();
 
+        // define kriteria
+        $data['masa_kerja'] = [1 => '0 Tahun',  2 => '1-2 Tahun',  3 => '2-5 Tahun',  4 => 'Diatas 5 Tahun'];
+        $data['pendidikan'] = [5 => 'S1', 4 => 'D3', 3 => 'SMA/SMK', 2 => 'SMP', 1 => 'SD'];
+        $data['keahlian'] = [4 => 'Sangat Baik', 3 => 'Baik', 2 => 'Cukup Baik'];
+        $data['usia'] = [3 => '< 30 Tahun', 2 => '30-45 Tahun', 1 => '> 45 Tahun'];
+        $data['kehadiran'] = [4 => '> 90%', 3 => '85-90%', 2 => '75-84%', 1 => '<75%'];
+        $data['tanggung_jawab'] = [4 => 'Sangat Baik', 3 => 'Baik', 2 => 'Cukup Baik'];
+        $data['prestasi_kerja'] = [4 => 'Sangat Baik', 3 => 'Baik', 2 => 'Cukup Baik'];
+        $data['kejujuran'] = [4 => 'Sangat Baik', 3 => 'Baik', 2 => 'Cukup Baik'];
+
+
         echo view('template/header');
         echo view('template/navbar');
         echo view('template/sidebar');

@@ -66,14 +66,14 @@
                         <td><?= $i++; ?></td>
                         <td><?= $p['id']; ?></td>
                         <td><?= $p['nama_pegawai']; ?></td>
-                        <td><?= $p['usia']; ?></td>
-                        <td><?= $p['pendidikan']; ?></td>
-                        <td><?= $p['keahlian']; ?></td>
-                        <td><?= $p['masa_kerja']; ?></td>
-                        <td><?= $p['kehadiran']; ?></td>
-                        <td><?= $p['tanggung_jawab']; ?></td>
-                        <td><?= $p['kejujuran']; ?></td>
-                        <td><?= $p['prestasi_kerja']; ?></td>
+                        <td><?= $usia[$p['usia']]; ?></td>
+                        <td><?= $pendidikan[$p['pendidikan']]; ?></td>
+                        <td><?= $keahlian[$p['keahlian']]; ?></td>
+                        <td><?= $masa_kerja[$p['masa_kerja']]; ?></td>
+                        <td><?= $kehadiran[$p['kehadiran']]; ?></td>
+                        <td><?= $tanggung_jawab[$p['tanggung_jawab']]; ?></td>
+                        <td><?= $kejujuran[$p['kejujuran']]; ?></td>
+                        <td><?= $prestasi_kerja[$p['prestasi_kerja']]; ?></td>
                         <td class="text-center">
                           <button type="button" class="btn btn-warning m-1 select_button" data-toggle="modal" data-target=".modal-edit" data-id="<?= $p['id']; ?>">
                             <i class="fa fa-edit"></i>
@@ -125,20 +125,44 @@
           <div class="row">
             <div class="col">
               <div class="form-group">
-                <label for="usia">Bobot Pegawai</label>
-                <input type="number" class="form-control" id="usia" name="usia" placeholder="Masukkan Bobot Usia" required>
+                <label for="usia">Bobot Usia</label>
+                <select class="form-control select2" style="width: 100%;" name="usia" id="usia" required>
+                  <option disabled selected>-- Pilih Usia --</option>
+                  <?php 
+                    foreach($usia as $k => $v){
+                      echo "<option value='{$k}'>{$v}</option>";
+                    }
+                  ?>
+                </select>
+                <!-- <input type="number" class="form-control" id="usia" name="usia" placeholder="Masukkan Bobot Usia" required> -->
               </div>
             </div>
             <div class="col">
               <div class="form-group">
-                <label for="pendidikan">Bobot Pegawai</label>
-                <input type="number" class="form-control" id="pendidikan" name="pendidikan" placeholder="Masukkan Bobot Pendidikan" required>
+                <label for="pendidikan">Bobot Pendidikan</label>
+                <select class="form-control select2" style="width: 100%;" name="pendidikan" id="pendidikan" required>
+                  <option disabled selected>-- Pilih Pendidikan --</option>
+                  <?php 
+                    foreach($pendidikan as $k => $v){
+                      echo "<option value='{$k}'>{$v}</option>";
+                    }
+                  ?>
+                </select>
+                <!-- <input type="number" class="form-control" id="pendidikan" name="pendidikan" placeholder="Masukkan Bobot Pendidikan" required> -->
               </div>
             </div>
             <div class="col">
               <div class="form-group">
-                <label for="keahlian">Bobot Pegawai</label>
-                <input type="number" class="form-control" id="keahlian" name="keahlian" placeholder="Masukkan Bobot Keahlian" required>
+                <label for="keahlian">Bobot Keahlian</label>
+                <select class="form-control select2" style="width: 100%;" name="keahlian" id="keahlian" required>
+                  <option disabled selected>-- Pilih Keahlian --</option>
+                  <?php 
+                    foreach($keahlian as $k => $v){
+                      echo "<option value='{$k}'>{$v}</option>";
+                    }
+                  ?>
+                </select>
+                <!-- <input type="number" class="form-control" id="keahlian" name="keahlian" placeholder="Masukkan Bobot Keahlian" required> -->
               </div>
             </div>
           </div>
@@ -146,33 +170,73 @@
             <div class="col">
               <div class="form-group">
                 <label for="masa_kerja">Bobot Masa Kerja</label>
-                <input type="number" class="form-control" id="masa_kerja" name="masa_kerja" placeholder="Masukkan Bobot Masa Kerja" required>
+                <select class="form-control select2" style="width: 100%;" name="masa_kerja" id="masa_kerja" required>
+                  <option disabled selected>-- Pilih Masa Kerja --</option>
+                  <?php 
+                    foreach($masa_kerja as $k => $v){
+                      echo "<option value='{$k}'>{$v}</option>";
+                    }
+                  ?>
+                </select>
+                <!-- <input type="number" class="form-control" id="masa_kerja" name="masa_kerja" placeholder="Masukkan Bobot Masa Kerja" required> -->
               </div>
             </div>
             <div class="col">
               <div class="form-group">
                 <label for="kehadiran">Bobot Kehadiran</label>
-                <input type="number" class="form-control" id="kehadiran" name="kehadiran" placeholder="Masukkan Bobot Kehadiran" required>
+                <select class="form-control select2" style="width: 100%;" name="kehadiran" id="kehadiran" required>
+                  <option disabled selected>-- Pilih Kehadiran --</option>
+                  <?php 
+                    foreach($kehadiran as $k => $v){
+                      echo "<option value='{$k}'>{$v}</option>";
+                    }
+                  ?>
+                </select>
+                <!-- <input type="number" class="form-control" id="kehadiran" name="kehadiran" placeholder="Masukkan Bobot Kehadiran" required> -->
               </div>
             </div>
             <div class="col">
               <div class="form-group">
-                <label for="tanggung_jawab">Bobot Tanggung Jawab</label>
-                <input type="number" class="form-control" id="tanggung_jawab" name="tanggung_jawab" placeholder="Masukkan Bobot Tanggung Jawab" required>
+                <label for="kejujuran">Bobot Kejujuran</label>
+                <select class="form-control select2" style="width: 100%;" name="kejujuran" id="kejujuran" required>
+                  <option disabled selected>-- Pilih Kejujuran --</option>
+                  <?php 
+                    foreach($kejujuran as $k => $v){
+                      echo "<option value='{$k}'>{$v}</option>";
+                    }
+                  ?>
+                </select>
+                <!-- <input type="number" class="form-control" id="kejujuran" name="kejujuran" placeholder="Masukkan Bobot Kejujuran" required> -->
               </div>
             </div>
           </div>
           <div class="row">
             <div class="col">
               <div class="form-group">
-                <label for="kejujuran">Bobot Kejujuran</label>
-                <input type="number" class="form-control" id="kejujuran" name="kejujuran" placeholder="Masukkan Bobot Kejujuran" required>
+                <label for="tanggung_jawab">Bobot Tanggung Jawab</label>
+                <select class="form-control select2" style="width: 100%;" name="tanggung_jawab" id="tanggung_jawab" required>
+                  <option disabled selected>-- Pilih Tanggung Jawab --</option>
+                  <?php 
+                    foreach($tanggung_jawab as $k => $v){
+                      echo "<option value='{$k}'>{$v}</option>";
+                    }
+                  ?>
+                </select>
+                <!-- <input type="number" class="form-control" id="tanggung_jawab" name="tanggung_jawab" placeholder="Masukkan Bobot Tanggung Jawab" required> -->
               </div>
             </div>
             <div class="col">
               <div class="form-group">
                 <label for="prestasi_kerja">Bobot Prestasi Kerja</label>
-                <input type="number" class="form-control" id="prestasi_kerja" name="prestasi_kerja" placeholder="Masukkan Bobot Prestasi Kerja" required>
+                <select class="form-control select2" style="width: 100%;" name="prestasi_kerja" id="prestasi_kerja" required>
+                  <option disabled selected>-- Pilih Prestasi Kerja --</option>
+                  <?php 
+                    foreach($prestasi_kerja as $k => $v){
+                      echo "<option value='{$k}'>{$v}</option>";
+                    }
+                  ?>
+                </select>
+                <!-- <input type="number" class="form-control" id="prestasi_kerja" name="prestasi_kerja" placeholder="Masukkan Bobot Prestasi Kerja" required> -->
               </div>
             </div>
           </div>
@@ -206,58 +270,121 @@
           <div class="form-group">
             <label for="nama_pegawai">Nama Pegawai</label>
             <input type="text" class="form-control" id="xnama_pegawai" name="xnama_pegawai" placeholder="Masukkan Nama Pegawai" required>
+          </div><div class="row">
+            <div class="col">
+              <div class="form-group">
+                <label for="xusia">Bobot Usia</label>
+                <select class="form-control select2" style="width: 100%;" name="xusia" id="xusia" required>
+                  <option disabled selected>-- Pilih Usia --</option>
+                  <?php 
+                    foreach($usia as $k => $v){
+                      echo "<option value='{$k}'>{$v}</option>";
+                    }
+                  ?>
+                </select>
+                <!-- <input type="number" class="form-control" id="usia" name="usia" placeholder="Masukkan Bobot Usia" required> -->
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-group">
+                <label for="xpendidikan">Bobot Pendidikan</label>
+                <select class="form-control select2" style="width: 100%;" name="xpendidikan" id="xpendidikan" required>
+                  <option disabled selected>-- Pilih Pendidikan --</option>
+                  <?php 
+                    foreach($pendidikan as $k => $v){
+                      echo "<option value='{$k}'>{$v}</option>";
+                    }
+                  ?>
+                </select>
+                <!-- <input type="number" class="form-control" id="pendidikan" name="pendidikan" placeholder="Masukkan Bobot Pendidikan" required> -->
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-group">
+                <label for="xkeahlian">Bobot Keahlian</label>
+                <select class="form-control select2" style="width: 100%;" name="xkeahlian" id="xkeahlian" required>
+                  <option disabled selected>-- Pilih Keahlian --</option>
+                  <?php 
+                    foreach($keahlian as $k => $v){
+                      echo "<option value='{$k}'>{$v}</option>";
+                    }
+                  ?>
+                </select>
+                <!-- <input type="number" class="form-control" id="keahlian" name="keahlian" placeholder="Masukkan Bobot Keahlian" required> -->
+              </div>
+            </div>
           </div>
           <div class="row">
             <div class="col">
               <div class="form-group">
-                <label for="usia">Bobot Pegawai</label>
-                <input type="number" class="form-control" id="xusia" name="xusia" placeholder="Masukkan Bobot Usia" required>
+                <label for="xmasa_kerja">Bobot Masa Kerja</label>
+                <select class="form-control select2" style="width: 100%;" name="xmasa_kerja" id="xmasa_kerja" required>
+                  <option disabled selected>-- Pilih Masa Kerja --</option>
+                  <?php 
+                    foreach($masa_kerja as $k => $v){
+                      echo "<option value='{$k}'>{$v}</option>";
+                    }
+                  ?>
+                </select>
+                <!-- <input type="number" class="form-control" id="masa_kerja" name="masa_kerja" placeholder="Masukkan Bobot Masa Kerja" required> -->
               </div>
             </div>
             <div class="col">
               <div class="form-group">
-                <label for="pendidikan">Bobot Pegawai</label>
-                <input type="number" class="form-control" id="xpendidikan" name="xpendidikan" placeholder="Masukkan Bobot Pendidikan" required>
+                <label for="xkehadiran">Bobot Kehadiran</label>
+                <select class="form-control select2" style="width: 100%;" name="xkehadiran" id="xkehadiran" required>
+                  <option disabled selected>-- Pilih Kehadiran --</option>
+                  <?php 
+                    foreach($kehadiran as $k => $v){
+                      echo "<option value='{$k}'>{$v}</option>";
+                    }
+                  ?>
+                </select>
+                <!-- <input type="number" class="form-control" id="kehadiran" name="kehadiran" placeholder="Masukkan Bobot Kehadiran" required> -->
               </div>
             </div>
             <div class="col">
               <div class="form-group">
-                <label for="keahlian">Bobot Pegawai</label>
-                <input type="number" class="form-control" id="xkeahlian" name="xkeahlian" placeholder="Masukkan Bobot Keahlian" required>
+                <label for="xkejujuran">Bobot Kejujuran</label>
+                <select class="form-control select2" style="width: 100%;" name="xkejujuran" id="xkejujuran" required>
+                  <option disabled selected>-- Pilih Kejujuran --</option>
+                  <?php 
+                    foreach($kejujuran as $k => $v){
+                      echo "<option value='{$k}'>{$v}</option>";
+                    }
+                  ?>
+                </select>
+                <!-- <input type="number" class="form-control" id="kejujuran" name="kejujuran" placeholder="Masukkan Bobot Kejujuran" required> -->
               </div>
             </div>
           </div>
           <div class="row">
             <div class="col">
               <div class="form-group">
-                <label for="masa_kerja">Bobot Masa Kerja</label>
-                <input type="number" class="form-control" id="xmasa_kerja" name="xmasa_kerja" placeholder="Masukkan Bobot Masa Kerja" required>
+                <label for="xtanggung_jawab">Bobot Tanggung Jawab</label>
+                <select class="form-control select2" style="width: 100%;" name="xtanggung_jawab" id="xtanggung_jawab" required>
+                  <option disabled selected>-- Pilih Tanggung Jawab --</option>
+                  <?php 
+                    foreach($tanggung_jawab as $k => $v){
+                      echo "<option value='{$k}'>{$v}</option>";
+                    }
+                  ?>
+                </select>
+                <!-- <input type="number" class="form-control" id="tanggung_jawab" name="tanggung_jawab" placeholder="Masukkan Bobot Tanggung Jawab" required> -->
               </div>
             </div>
             <div class="col">
               <div class="form-group">
-                <label for="kehadiran">Bobot Kehadiran</label>
-                <input type="number" class="form-control" id="xkehadiran" name="xkehadiran" placeholder="Masukkan Bobot Kehadiran" required>
-              </div>
-            </div>
-            <div class="col">
-              <div class="form-group">
-                <label for="tanggung_jawab">Bobot Tanggung Jawab</label>
-                <input type="number" class="form-control" id="xtanggung_jawab" name="xtanggung_jawab" placeholder="Masukkan Bobot Tanggung Jawab" required>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col">
-              <div class="form-group">
-                <label for="kejujuran">Bobot Kejujuran</label>
-                <input type="number" class="form-control" id="xkejujuran" name="xkejujuran" placeholder="Masukkan Bobot Kejujuran" required>
-              </div>
-            </div>
-            <div class="col">
-              <div class="form-group">
-                <label for="prestasi_kerja">Bobot Prestasi Kerja</label>
-                <input type="number" class="form-control" id="xprestasi_kerja" name="xprestasi_kerja" placeholder="Masukkan Bobot Prestasi Kerja" required>
+                <label for="xprestasi_kerja">Bobot Prestasi Kerja</label>
+                <select class="form-control select2" style="width: 100%;" name="xprestasi_kerja" id="xprestasi_kerja" required>
+                  <option disabled selected>-- Pilih Prestasi Kerja --</option>
+                  <?php 
+                    foreach($prestasi_kerja as $k => $v){
+                      echo "<option value='{$k}'>{$v}</option>";
+                    }
+                  ?>
+                </select>
+                <!-- <input type="number" class="form-control" id="prestasi_kerja" name="prestasi_kerja" placeholder="Masukkan Bobot Prestasi Kerja" required> -->
               </div>
             </div>
           </div>
@@ -296,14 +423,14 @@
     .then(data => {
       $('#xnik').val(data['id'])
       $('#xnama_pegawai').val(data['nama_pegawai'])
-      $('#xusia').val(data['usia'])
-      $('#xpendidikan').val(data['pendidikan'])
-      $('#xkeahlian').val(data['keahlian'])
-      $('#xmasa_kerja').val(data['masa_kerja'])
-      $('#xkehadiran').val(data['kehadiran'])
-      $('#xtanggung_jawab').val(data['tanggung_jawab'])
-      $('#xkejujuran').val(data['kejujuran'])
-      $('#xprestasi_kerja').val(data['prestasi_kerja'])
+      $('#xusia').val(data['usia']).change()
+      $('#xpendidikan').val(data['pendidikan']).change()
+      $('#xkeahlian').val(data['keahlian']).change()
+      $('#xmasa_kerja').val(data['masa_kerja']).change()
+      $('#xkehadiran').val(data['kehadiran']).change()
+      $('#xtanggung_jawab').val(data['tanggung_jawab']).change()
+      $('#xkejujuran').val(data['kejujuran']).change()
+      $('#xprestasi_kerja').val(data['prestasi_kerja']).change()
     })
     .catch(error => {
         console.error('Error:', error);
