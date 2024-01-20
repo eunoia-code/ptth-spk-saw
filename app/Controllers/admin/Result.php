@@ -53,6 +53,7 @@ class Result extends BaseController
             $skor = 0;
             $krt = []; 
             $bbt = [];
+            $raw = [];
             $nrm = 0;
             foreach ($bobotKriteria as $kriteria => $bobotInfo) {
 
@@ -79,11 +80,14 @@ class Result extends BaseController
                 // if($pegawai['id']=="2011.01.01.0203")
                 //     echo $nilaiNormalisasi ." xx ". $bobot;
                 $bbt[$kriteria] = $bobot; $nrm = $nilaiNormalisasi;
-                $skor += $nilaiNormalisasi * $bobot;
+                $raw[$kriteria] = $kriteria." : <b>".number_format($nilaiNormalisasi*$bobot, 2)."</b>";
+                // $raw[$kriteria] = $kriteria." : <b>".$nilaiNormalisasi." * ".$bobot." = ".$nilaiNormalisasi*$bobot."</b>";
+                $skor += number_format($nilaiNormalisasi*$bobot, 2);
             }
             $skorPegawai[] = [
                 'id' => $pegawai['id'], 
                 'nama_pegawai' => $pegawai['nama_pegawai'], 
+                'raw' => implode(' <br> ', $raw),
                 'bobot_kriteria' => $krt, 
                 'normalisasi' => $nrm, 
                 'bobot' => $bbt, 
